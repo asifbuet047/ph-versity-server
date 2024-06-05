@@ -1,8 +1,8 @@
 import { Application, Request, Response } from "express";
 import express from "express";
-import { UserRoute } from "./modules/user/user.routes";
-import globalErrorHandler from "./middlewires/globalErrorHandler";
-import notFoundRouteHandler from "./middlewires/notFoundRouteHandler";
+import globalErrorHandler from "./app/middlewires/globalErrorHandler";
+import notFoundRouteHandler from "./app/middlewires/notFoundRouteHandler";
+import UserRoute from "./app/modules/user/user.routes";
 
 const app: Application = express();
 

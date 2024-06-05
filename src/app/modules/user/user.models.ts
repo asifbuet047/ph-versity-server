@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { TUser } from "./user.interface";
 import bcrypt from "bcrypt";
-import config from "../../app/config";
+import config from "../../config/index";
 
 const userSchema = new Schema<TUser>(
   {

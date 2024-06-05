@@ -1,11 +1,6 @@
-import { NextFunction, Request, RequestHandler, Response } from "express";
 import { UserServices } from "./user.services";
+import { functionForResolveOrCatchAsyncError } from "../../utils/functionForResolveOrCatchAsyncError";
 
-const functionForResolveOrCatchAsyncError = (fn: RequestHandler) => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    Promise.resolve(fn(req, res, next)).catch(err => next(err));
-  };
-}; // higher order fuinction which receive a function and return a function
 const addStudent = functionForResolveOrCatchAsyncError(
   async (req, res, next) => {
     const { password, student } = req.body;

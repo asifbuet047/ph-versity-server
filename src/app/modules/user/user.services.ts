@@ -1,4 +1,4 @@
-import config from "../../app/config";
+import config from "../../config/index";
 import { TStudent } from "../student/student.interface";
 import StudentModel from "../student/student.models";
 import { TUser } from "./user.interface";
