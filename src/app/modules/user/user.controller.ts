@@ -1,7 +1,7 @@
 import { UserServices } from "./user.services";
-import { functionForResolveOrCatchAsyncError } from "../../utils/functionForResolveOrCatchAsyncError";
+import { requestResolveOrCatchAsyncError } from "../../utils/requestResolveOrCatchAsyncError";
 
-const addStudent = functionForResolveOrCatchAsyncError(
+const addStudent = requestResolveOrCatchAsyncError(
   async (req, res, next) => {
     const { password, student } = req.body;
 
