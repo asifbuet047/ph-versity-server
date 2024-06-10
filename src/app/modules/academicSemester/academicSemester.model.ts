@@ -40,11 +40,12 @@ const academicSemesterSchema = new Schema<TAcademicSemester>(
 );
 
 academicSemesterSchema.pre("save", async function (next) {
+  // prevent creation of same semester name in same year
   const isExits = await AcademicSemesterModel.findOne({
     name: this.name,
     year: this.year,
   });
- 
+
   if (isExits) {
     throw new Error("Already exits academic semester");
   }
