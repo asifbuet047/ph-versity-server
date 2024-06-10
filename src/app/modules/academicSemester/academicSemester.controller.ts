@@ -1,8 +1,10 @@
+import { NextFunction, Request, Response } from "express";
 import { requestResolveOrCatchAsyncError } from "../../utils/requestResolveOrCatchAsyncError";
 import { AcademicSemesterServices } from "./academicSemester.services";
 
 const createAcademicSemester = requestResolveOrCatchAsyncError(
-  async (req, res) => {
+  async (req: Request, res: Response, next: NextFunction) => {
+
     const result = await AcademicSemesterServices.createAcademicSemesterIntoDB(
       req.body,
     );

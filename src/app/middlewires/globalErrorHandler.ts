@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
+import httpStatus from "http-status";
 
 const globalErrorHandler = (
   err: any,
@@ -12,7 +13,7 @@ const globalErrorHandler = (
 ) => {
   const message = err.message || "Something went wrong";
 
-  return res.status(500).json({
+  return res.status(httpStatus.SERVICE_UNAVAILABLE).json({
     success: false,
     message,
     error: err,
