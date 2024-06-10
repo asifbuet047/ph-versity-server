@@ -11,4 +11,14 @@ router.post(
   AcademicSemesterController.createAcademicSemester,
 );
 
+router.get(
+  "/all-academic-semester",
+  AcademicSemesterController.findAllAcacademicSemester,
+);
+
+router.get(
+  "/:semesterId",
+  AcademicSemesterController.findSingleAcademicSemester,
+);
+
 export const AcademicSemesterRouter = router;
