@@ -9,7 +9,7 @@ const addStudentIntoDB = async (password: string, studentInfo: TStudent) => {
 
   userData.password = password || (config.default_password as string);
   userData.role = "student";
-  userData.id = "202410117301";
+  userData.id = "202410117302";
 
   const newUser = await UserModel.create(userData); // create a User document in that collection
 

@@ -1,18 +1,13 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import { UserController } from "./user.controller";
+import { validateRequest } from "../../middlewires/validateRequest";
+import { createStudentValidationSchema } from "../student/student.validation";
 
 const UserRoute = express.Router();
 
-const routeLevelMiddleware = (param: string) => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    console.log(param);
-    next();
-  };
-};
-
 UserRoute.post(
   "/add-student",
-  routeLevelMiddleware("Test parametered midldewire"),
+  validateRequest(createStudentValidationSchema),
   UserController.addStudent,
 );
 

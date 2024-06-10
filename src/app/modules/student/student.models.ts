@@ -10,18 +10,13 @@ const userNameSchema = new Schema<TUserName>({
   firstName: {
     type: String,
     required: [true, "First Name is required"],
-    trim: true,
-    maxlength: [20, "Name can not be more than 20 characters"],
   },
   middleName: {
     type: String,
-    trim: true,
   },
   lastName: {
     type: String,
-    trim: true,
     required: [true, "Last Name is required"],
-    maxlength: [20, "Name can not be more than 20 characters"],
   },
 });
 
@@ -83,7 +78,11 @@ const studentSchema = new Schema<TStudent>({
     type: Schema.Types.ObjectId,
     required: [true, "User id is required"],
     unique: true,
-    ref: "User",
+    ref: "user",
+  },
+  academicSemester: {
+    type: Schema.Types.ObjectId,
+    ref: "AcademicSemester",
   },
   name: {
     type: userNameSchema,
@@ -112,7 +111,7 @@ const studentSchema = new Schema<TStudent>({
   emergencyContactNo: {
     type: Schema.Types.String,
   },
-  bloogGroup: {
+  bloodGroup: {
     type: Schema.Types.String,
     enum: {
       values: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],

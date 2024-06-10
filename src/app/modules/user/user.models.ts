@@ -36,15 +36,12 @@ const userSchema = new Schema<TUser>(
 );
 
 userSchema.pre("save", async function (next) {
-  console.log(this);
   const hash = await bcrypt.hash(this.password, Number(config.default_salt));
-  console.log(hash);
   this.password = hash;
   next();
 });
 
 userSchema.post("save", async function (document, next) {
-  console.log(document);
   document.password = "HASHED";
   next();
 });

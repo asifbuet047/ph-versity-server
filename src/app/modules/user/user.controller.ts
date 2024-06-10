@@ -1,8 +1,9 @@
 import { UserServices } from "./user.services";
 import { requestResolveOrCatchAsyncError } from "../../utils/requestResolveOrCatchAsyncError";
+import { NextFunction, Request, Response } from "express";
 
 const addStudent = requestResolveOrCatchAsyncError(
-  async (req, res, next) => {
+  async (req:Request, res:Response, next:NextFunction) => {
     const { password, student } = req.body;
 
     const result = await UserServices.addStudentIntoDB(password, student);
