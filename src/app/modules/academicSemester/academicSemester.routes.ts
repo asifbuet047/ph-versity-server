@@ -1,9 +1,6 @@
 import { Router } from "express";
 import { validateRequest } from "../../middlewires/validateRequest";
-import {
-  AcademicSemesterValidationSchema,
-  academicSemesterValidationSchema,
-} from "./academicSemester.validation";
+import { AcademicSemesterValidationSchema } from "./academicSemester.validation";
 import { AcademicSemesterController } from "./academicSemester.controller";
 
 const router = Router();

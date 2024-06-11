@@ -5,7 +5,6 @@ import {
   AcademicSemesterName,
   Months,
 } from "./academicSemester.constants";
-import { academicSemesterValidationSchema } from "./academicSemester.validation";
 
 const academicSemesterSchema = new Schema<TAcademicSemester>(
   {

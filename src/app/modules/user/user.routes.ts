@@ -1,13 +1,15 @@
 import express from "express";
 import { UserController } from "./user.controller";
 import { validateRequest } from "../../middlewires/validateRequest";
-import { createStudentValidationSchema } from "../student/student.validation";
+import { StudentValidationSchema } from "../student/student.validation";
+import { UsersValidationSchema } from "./users.validation";
 
 const UserRoute = express.Router();
 
 UserRoute.post(
   "/add-student",
-  validateRequest(createStudentValidationSchema),
+  validateRequest(UsersValidationSchema.createUsersValidationSchema),
+  validateRequest(StudentValidationSchema.createStudentValidationSchema),
   UserController.addStudent,
 );
 

@@ -30,7 +30,6 @@ const updateSingleAcademicSemesterIntoDB = async (
   id: string,
   updatedSemester: Partial<TAcademicSemester>,
 ) => {
-  console.log(updatedSemester);
   if (
     academicSemesterNameCodeMapper[updatedSemester.name as string] ==
     updatedSemester.code
