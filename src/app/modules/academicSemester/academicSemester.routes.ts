@@ -1,13 +1,18 @@
 import { Router } from "express";
 import { validateRequest } from "../../middlewires/validateRequest";
-import { academicSemesterValidationSchema } from "./academicSemester.validation";
+import {
+  AcademicSemesterValidationSchema,
+  academicSemesterValidationSchema,
+} from "./academicSemester.validation";
 import { AcademicSemesterController } from "./academicSemester.controller";
 
 const router = Router();
 
 router.post(
   "/create-academic-semester",
-  validateRequest(academicSemesterValidationSchema),
+  validateRequest(
+    AcademicSemesterValidationSchema.createAcademicSemesterValidationSchema,
+  ),
   AcademicSemesterController.createAcademicSemester,
 );
 
@@ -19,6 +24,14 @@ router.get(
 router.get(
   "/:semesterId",
   AcademicSemesterController.findSingleAcademicSemester,
+);
+
+router.patch(
+  "/:semesterId",
+  validateRequest(
+    AcademicSemesterValidationSchema.updateAcademicSemesterValidationSchema,
+  ),
+  AcademicSemesterController.updateSingleAcademicSemester,
 );
 
 export const AcademicSemesterRouter = router;

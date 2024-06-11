@@ -5,7 +5,7 @@ import {
   Months,
 } from "./academicSemester.constants";
 
-export const academicSemesterValidationSchema = z.object({
+const createAcademicSemesterValidationSchema = z.object({
   name: z.enum([...AcademicSemesterName] as [string, ...string[]], {
     message: "Proper name required",
   }),
@@ -20,3 +20,32 @@ export const academicSemesterValidationSchema = z.object({
     message: "Should be  valid month name",
   }),
 });
+
+const updateAcademicSemesterValidationSchema = z.object({
+  name: z
+    .enum([...AcademicSemesterName] as [string, ...string[]], {
+      message: "Proper name required",
+    })
+    .optional(),
+  code: z
+    .enum([...AcademicSemesterCode] as [string, ...string[]], {
+      message: "Proper semester code required",
+    })
+    .optional(),
+  year: z.string().optional(),
+  startMonth: z
+    .enum([...Months] as [string, ...string[]], {
+      message: "Should be  valid month name",
+    })
+    .optional(),
+  endMonth: z
+    .enum([...Months] as [string, ...string[]], {
+      message: "Should be  valid month name",
+    })
+    .optional(),
+});
+
+export const AcademicSemesterValidationSchema = {
+  createAcademicSemesterValidationSchema,
+  updateAcademicSemesterValidationSchema,
+};

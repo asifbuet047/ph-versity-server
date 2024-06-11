@@ -44,8 +44,26 @@ const findSingleAcademicSemester = requestResolveOrCatchAsyncError(
   },
 );
 
+const updateSingleAcademicSemester = requestResolveOrCatchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.params);
+    const result =
+      await AcademicSemesterServices.updateSingleAcademicSemesterIntoDB(
+        req.params.semesterId,
+        req.body,
+      );
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Updating specific Academic Semester successful",
+      data: result,
+    });
+  },
+);
+
 export const AcademicSemesterController = {
   createAcademicSemester,
   findAllAcacademicSemester,
   findSingleAcademicSemester,
+  updateSingleAcademicSemester,
 };

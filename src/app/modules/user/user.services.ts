@@ -23,7 +23,7 @@ const addStudentIntoDB = async (password: string, studentInfo: TStudent) => {
 
   return newUser;
 };
-
+ 
 export const UserServices = {
   addStudentIntoDB,
 };
