@@ -5,6 +5,8 @@ import {
   TStudent,
   TUserName,
 } from "./student.interface";
+import CustomError from "../../error/CustomError";
+import httpStatus from "http-status";
 
 const userNameSchema = new Schema<TUserName>(
   {
@@ -153,6 +155,12 @@ const studentSchema = new Schema<TStudent>({
     type: Boolean,
     default: false,
   },
+});
+
+studentSchema.post("findOne", function (doc) {
+  if (!doc) {
+    throw new CustomError(httpStatus.NOT_FOUND, "NOT");
+  }
 });
 
 const StudentModel = mongoose.model("student", studentSchema);

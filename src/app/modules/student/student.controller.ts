@@ -12,7 +12,7 @@ const findSingleStudent = requestResolveOrCatchAsyncError(
     res.status(httpStatus.OK).json({
       success: true,
       message: "Fetching specific student successful",
-      data: result,
+      data: result ?? "Not found",
     });
   },
 );

@@ -1,7 +1,7 @@
 import StudentModel from "./student.models";
 
 const findSingleStudentFromDB = async (studentId: string) => {
-  const result = await StudentModel.findById(studentId);
+  const result = await StudentModel.findById(studentId).populate('user').populate('academicSemester');
   return result;
 };
 
