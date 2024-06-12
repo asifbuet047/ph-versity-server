@@ -1,23 +1,35 @@
 import { NextFunction, Request, Response } from "express";
 import { StudentServices } from "./student.services";
+import { requestResolveOrCatchAsyncError } from "../../utils/requestResolveOrCatchAsyncError";
+import httpStatus from "http-status";
 
-const getSingleStudent = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
-  try {
-    const { id } = req.params;
-    const student = await StudentServices.getSingleStudentFromDB(id);
-    res.status(200).json({
-      status: true,
-      data: student,
+const findSingleStudent = requestResolveOrCatchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await StudentServices.findSingleStudentFromDB(
+      req.params.studentId,
+    );
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Fetching specific student successful",
+      data: result,
     });
-  } catch (error) {
-    next(error);
-  }
-};
+  },
+);
+
+const findAllStudent = requestResolveOrCatchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await StudentServices.findAllStudentFromDB();
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Fetching all student successful",
+      data: result,
+    });
+  },
+);
 
 export const StudentController = {
-  getSingleStudent,
+  findSingleStudent,
+  findAllStudent,
 };
